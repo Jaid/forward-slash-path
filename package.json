@@ -1,6 +1,6 @@
 {
   "name": "forward-slash-path",
-  "version": "4.0.1",
+  "version": "0.1.0",
   "type": "module",
   "description": "Drop-in replacement for node:path",
   "keywords": [

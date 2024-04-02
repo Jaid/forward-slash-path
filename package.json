@@ -104,13 +104,13 @@
   },
   "devDependencies": {
     "@rollup/plugin-json": "^6.1.0",
-    "@types/node": "^20.11.30",
+    "@types/node": "^20.12.2",
     "browserslist-config-jaid-universal": "^3.0.0",
     "bundle-declarations-webpack-plugin": "^5.1.1",
     "eslint-config-jaid": "^8.24.0",
     "rollup-config-factory": "^0.3.0",
     "ts-node": "^10.9.2",
-    "tsconfig-jaid": "^8.0.0",
+    "tsconfig-jaid": "^8.1.0",
     "tsconfig-jaid-node": "^8.1.0",
     "tsconfig-paths": "^4.2.0",
     "tsconfig-paths-webpack-plugin": "^4.1.0",
@@ -120,6 +120,6 @@
     "webpack": "^5.91.0",
     "webpack-cli": "^5.1.4",
     "webpack-config-factory": "file://D:/git/webpack-config-factory",
-    "forward-slash-path": "^0.3.0"
+    "zeug": "jaid/zeug#tsc"
   }
 }

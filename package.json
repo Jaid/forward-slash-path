@@ -1,0 +1,124 @@
+{
+  "name": "forward-slash-path",
+  "version": "4.0.1",
+  "type": "module",
+  "description": "Drop-in replacement for node:path",
+  "keywords": [
+    "path"
+  ],
+  "author": "Jaid <jaid.jsx@gmail.com> (https://github.com/Jaid)",
+  "homepage": "https://github.com/jaid/forward-slash-path",
+  "funding": "https://github.com/sponsors/jaid",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jaid/forward-slash-path"
+  },
+  "exports": {
+    ".": {
+      "import": "./src/index.ts"
+    }
+  },
+  "scripts": {
+    "build": "wireit",
+    "build:production": "wireit",
+    "test": "wireit",
+    "test-build": "wireit",
+    "test-build:production": "wireit",
+    "release": "wireit"
+  },
+  "wireit": {
+    "test": {
+      "env": {
+        "NODE_ENV": "test"
+      },
+      "files": [
+        "src/**/*",
+        "test/**/*",
+        "package.json"
+      ],
+      "command": "node --import tsx test/test.ts"
+    },
+    "test-build": {
+      "env": {
+        "NODE_ENV": "test",
+        "MAIN_MODULE": "./dist/package/forward-slash-path/development/lib.js"
+      },
+      "dependencies": [
+        "build"
+      ],
+      "command": "node --import tsx test/test.ts"
+    },
+    "test-build:production": {
+      "env": {
+        "NODE_ENV": "test",
+        "MAIN_MODULE": "./dist/package/forward-slash-path/production/lib.js"
+      },
+      "dependencies": [
+        "build:production"
+      ],
+      "command": "node --import tsx test/test.ts"
+    },
+    "build:production": {
+      "env": {
+        "NODE_ENV": "production"
+      },
+      "output": [
+        "dist/package/forward-slash-path/production"
+      ],
+      "files": [
+        "src/**/*",
+        "rollup.config.js",
+        "package.json"
+      ],
+      "command": "node node_modules/rollup/dist/bin/rollup --config"
+    },
+    "build": {
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "output": [
+        "dist/package/forward-slash-path/development"
+      ],
+      "files": [
+        "src/**/*",
+        "rollup.config.js",
+        "package.json"
+      ],
+      "command": "node node_modules/rollup/dist/bin/rollup --config"
+    },
+    "release": {
+      "dependencies": [
+        "test-build:production",
+        "build:production"
+      ],
+      "command": "fd --unrestricted --full-path 'dist/package/[\\w-]+/production/package.json' --exec bash -c 'npm publish {//}'"
+    },
+    "release:windows": {
+      "dependencies": [
+        "test-build:production",
+        "build:production"
+      ],
+      "command": "pwsh -Command \"Get-ChildItem -Path 'dist\\package\\*\\production\\package.json' | ForEach-Object { npm publish $_.DirectoryName }\""
+    }
+  },
+  "devDependencies": {
+    "@rollup/plugin-json": "^6.1.0",
+    "@types/node": "^20.11.30",
+    "browserslist-config-jaid-universal": "^3.0.0",
+    "bundle-declarations-webpack-plugin": "^5.1.1",
+    "eslint-config-jaid": "^8.24.0",
+    "rollup-config-factory": "^0.3.0",
+    "ts-node": "^10.9.2",
+    "tsconfig-jaid": "^8.0.0",
+    "tsconfig-jaid-node": "^8.1.0",
+    "tsconfig-paths": "^4.2.0",
+    "tsconfig-paths-webpack-plugin": "^4.1.0",
+    "tsx": "^4.7.1",
+    "type-fest": "^4.14.0",
+    "typescript": "^5.4.3",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-config-factory": "file://D:/git/webpack-config-factory",
+    "forward-slash-path": "^0.3.0"
+  }
+}

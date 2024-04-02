@@ -1,15 +1,9 @@
-import type {Simplify} from 'type-fest'
-
-import * as bridge from 'src/bridge.js'
 import {enforceForwardSlashes} from 'src/enforceForwardSlashes.js'
-import * as extra from 'src/extraForwardSlashes.js'
+import * as lib from 'src/lib.js'
 
-type Path = {
-  (fileOrFolder: string): string
-} & Simplify<typeof bridge> & Simplify<typeof extra>
+type Path = ((fileOrFolder: string) => string) & typeof lib
 
-const path = Object.assign(enforceForwardSlashes, bridge, extra) as Path
+const path = Object.assign(enforceForwardSlashes, lib) as Path
 export default path
-export * from 'src/bridge.js'
-export * from 'src/extraForwardSlashes.js'
+export * from 'src/lib.js'
 export {enforceForwardSlashes, path}

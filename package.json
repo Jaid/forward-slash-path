@@ -24,7 +24,8 @@
     "test": "wireit",
     "test-build": "wireit",
     "test-build:production": "wireit",
-    "release": "wireit"
+    "release": "wireit",
+    "release:windows": "wireit"
   },
   "wireit": {
     "test": {

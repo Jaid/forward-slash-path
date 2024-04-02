@@ -26,26 +26,26 @@ test(`extra/withoutExtension`, async () => {
   const result = path.withoutExtension(exampleFile)
   assert.equal(result, `C:/Program Files/Hello World/index`)
 })
-test(`extra/fileNameWithoutExtension`, async () => {
-  const result = path.fileNameWithoutExtension(exampleFile)
+test(`extra/stem`, async () => {
+  const result = path.stem(exampleFile)
   assert.equal(result, `index`)
 })
-test(`extra/getExtension`, async () => {
-  const result = path.getExtension(exampleFile)
+test(`extra/extension`, async () => {
+  const result = path.extension(exampleFile)
   assert.equal(result, `js`)
 })
-test(`extra/getIndexBeforeExtension`, async () => {
-  const result = path.getIndexBeforeExtension(exampleFile)
+test(`extra/indexBeforeExtension`, async () => {
+  const result = path.indexBeforeExtension(exampleFile)
   assert.equal(result, 34)
 })
-test(`extra/getIndexAfterParent`, async () => {
-  const result = path.getIndexAfterParent(exampleFile)
+test(`extra/indexAfterParent`, async () => {
+  const result = path.indexAfterParent(exampleFile)
   assert.equal(result, 29)
 })
-test(`extra/getIndexBeforeName`, async () => {
-  const result = path.getIndexBeforeName(`C:/a`)
+test(`extra/indexBeforeName`, async () => {
+  const result = path.indexBeforeName(`C:/a`)
   assert.equal(result, 3)
-  const result2 = path.getIndexBeforeName(exampleFile)
+  const result2 = path.indexBeforeName(exampleFile)
   assert.equal(result2, 29)
 })
 test(`extra/isDotFile`, async () => {
@@ -73,4 +73,12 @@ test(`extra/replaceExtension`, async () => {
   assert.equal(result2, `C:/Program Files/Hello World.ts`)
   const result3 = path.replaceExtension(exampleFile, `js`)
   assert.equal(result3, undefined)
+})
+test(`extra/replaceStem`, async () => {
+  const result = path.replaceStem(exampleFile, `test`)
+  assert.equal(result, `C:/Program Files/Hello World/test.js`)
+})
+test(`extra/parentName`, async () => {
+  const result = path.parentName(exampleFile)
+  assert.equal(result, `Hello World`)
 })

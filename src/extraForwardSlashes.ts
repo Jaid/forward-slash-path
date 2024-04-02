@@ -17,6 +17,10 @@ const replaceExtension = (fileOrFolder: string, newExtension: string) => {
   const fileOrFolderNormalized = enforceForwardSlashes(fileOrFolder)
   return extra.replaceExtension(fileOrFolderNormalized, newExtension)
 }
+const replaceStem = (fileOrFolder: string, newStem: string) => {
+  const fileOrFolderNormalized = enforceForwardSlashes(fileOrFolder)
+  return extra.replaceStem(fileOrFolderNormalized, newStem)
+}
 
-export {addPrefix, addSuffix, replaceExtension, withoutExtension}
+export {addPrefix, addSuffix, replaceExtension, replaceStem, withoutExtension}
 export * from 'src/extra.js'

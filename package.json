@@ -120,6 +120,6 @@
     "webpack": "^5.91.0",
     "webpack-cli": "^5.1.4",
     "webpack-config-factory": "file://D:/git/webpack-config-factory",
-    "zeug": "jaid/zeug#tsc"
+    "zeug": "^0.3.0"
   }
 }

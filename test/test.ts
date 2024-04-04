@@ -6,6 +6,7 @@ import {getMainModule} from 'zeug'
 type MainModule = typeof import('forward-slash-path')
 const path = await getMainModule<MainModule>(`forward-slash-path`)
 const exampleFile = `c:\\Program Files\\Hello World\\index.js`
+const exampleLowLevelFile = `\\\\?\\c:\\Program Files\\Hello World\\index.js`
 const exampleFolder = `C:\\Program Files\\Hello World`
 const exampleName = `index.test.js`
 test(`clean`, async () => {
@@ -13,6 +14,8 @@ test(`clean`, async () => {
   assert.equal(result, `C:/Program Files/Hello World/index.js`)
   const result2 = path.cleanPath(exampleFolder)
   assert.equal(result2, `C:/Program Files/Hello World`)
+  const result3 = path.cleanPath(exampleLowLevelFile)
+  assert.equal(result3, `\\\\?\\C:\\Program Files\\Hello World\\index.js`)
 })
 test(`hasSlash`, async () => {
   const result = path.hasSlash(exampleFile)

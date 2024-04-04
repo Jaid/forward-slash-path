@@ -14,10 +14,16 @@ export const cleanPath = (fileOrFolder: string) => {
   const isFirstSymbolLowercase = firstSymbol >= `a` && firstSymbol <= `z`
   if (isFirstSymbolLowercase) {
     if (result.startsWith(`${firstSymbol}:/`)) {
-      result = firstSymbol.toUpperCase() + result.slice(1)
+      result = `${firstSymbol.toUpperCase()}:/${result.slice(3)}`
     }
-  } else if (result.startsWith(`\\\\?\\${firstSymbol}:\\`)) {
-    result = `\\\\?\\${firstSymbol.toUpperCase()}:${result.slice(6)}`
+  } else if (result.length >= 4) {
+    const driveSymbol = result[4]
+    const isDriveSymbolLowercase = driveSymbol >= `a` && driveSymbol <= `z`
+    if (isDriveSymbolLowercase) {
+      if (result.startsWith(`\\\\?\\${driveSymbol}:\\`)) {
+        result = `\\\\?\\${driveSymbol.toUpperCase()}:${result.slice(6)}`
+      }
+    }
   }
   return result
 }

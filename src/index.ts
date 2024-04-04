@@ -1,4 +1,4 @@
-import {cleanPath} from 'src/enforceForwardSlashes.js'
+import {cleanPath} from 'src/cleanPath.js'
 import * as lib from 'src/lib.js'
 
 type Path = ((fileOrFolder: string) => string) & typeof lib

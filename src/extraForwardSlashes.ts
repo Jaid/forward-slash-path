@@ -1,4 +1,4 @@
-import {cleanPath} from 'src/enforceForwardSlashes.js'
+import {cleanPath} from 'src/cleanPath.js'
 import * as extra from 'src/extra.js'
 
 export const withoutExtension: typeof extra['withoutExtension'] = fileOrFolder => {

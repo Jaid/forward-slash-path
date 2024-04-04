@@ -2,7 +2,7 @@ import type {FormatInputPathObject, ParsedPath} from 'node:path'
 
 import path from 'node:path'
 
-import {cleanPath} from 'src/enforceForwardSlashes.js'
+import {cleanPath} from 'src/cleanPath.js'
 
 export const normalize = (fileOrFolder: string): string => {
   return cleanPath(path.normalize(fileOrFolder))

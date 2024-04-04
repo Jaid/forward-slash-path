@@ -30,7 +30,8 @@
   "wireit": {
     "test": {
       "env": {
-        "NODE_ENV": "test"
+        "NODE_ENV": "test",
+        "MAIN_MODULE": "src/index.ts"
       },
       "files": [
         "src/**/*",

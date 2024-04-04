@@ -82,3 +82,7 @@ test(`extra/parentName`, async () => {
   const result = path.parentName(exampleFile)
   assert.equal(result, `Hello World`)
 })
+test(`url/folderFromUrl`, async () => {
+  const result = path.folderFromUrl(import.meta.url)
+  assert.match(result, /\/test$/)
+})

@@ -1,26 +1,25 @@
 import {enforceForwardSlashes} from 'src/enforceForwardSlashes.js'
 import * as extra from 'src/extra.js'
 
-const withoutExtension = (fileOrFolder: string) => {
+export const withoutExtension: typeof extra['withoutExtension'] = fileOrFolder => {
   const fileOrFolderNormalized = enforceForwardSlashes(fileOrFolder)
   return extra.withoutExtension(fileOrFolderNormalized)
 }
-const addSuffix = (fileOrFolder: string, suffix: string) => {
+export const addSuffix: typeof extra['addSuffix'] = (fileOrFolder, suffix) => {
   const fileOrFolderNormalized = enforceForwardSlashes(fileOrFolder)
   return extra.addSuffix(fileOrFolderNormalized, suffix)
 }
-const addPrefix = (fileOrFolder: string, prefix: string) => {
+export const addPrefix: typeof extra['addPrefix'] = (fileOrFolder, prefix) => {
   const fileOrFolderNormalized = enforceForwardSlashes(fileOrFolder)
   return extra.addPrefix(fileOrFolderNormalized, prefix)
 }
-const replaceExtension = (fileOrFolder: string, newExtension: string) => {
+export const replaceExtension: typeof extra['replaceExtension'] = (fileOrFolder, newExtension) => {
   const fileOrFolderNormalized = enforceForwardSlashes(fileOrFolder)
   return extra.replaceExtension(fileOrFolderNormalized, newExtension)
 }
-const replaceStem = (fileOrFolder: string, newStem: string) => {
+export const replaceStem: typeof extra['replaceStem'] = (fileOrFolder, newStem) => {
   const fileOrFolderNormalized = enforceForwardSlashes(fileOrFolder)
   return extra.replaceStem(fileOrFolderNormalized, newStem)
 }
 
-export {addPrefix, addSuffix, replaceExtension, replaceStem, withoutExtension}
 export * from 'src/extra.js'

@@ -5,12 +5,14 @@ import {getMainModule} from 'zeug'
 
 type MainModule = typeof import('forward-slash-path')
 const path = await getMainModule<MainModule>(`forward-slash-path`)
-const exampleFile = `C:\\Program Files\\Hello World\\index.js`
+const exampleFile = `c:\\Program Files\\Hello World\\index.js`
 const exampleFolder = `C:\\Program Files\\Hello World`
 const exampleName = `index.test.js`
-test(`enforceForwardSlashes`, async () => {
-  const result = path.enforceForwardSlashes(exampleFile)
+test(`clean`, async () => {
+  const result = path.cleanPath(exampleFile)
   assert.equal(result, `C:/Program Files/Hello World/index.js`)
+  const result2 = path.cleanPath(exampleFolder)
+  assert.equal(result2, `C:/Program Files/Hello World`)
 })
 test(`hasSlash`, async () => {
   const result = path.hasSlash(exampleFile)

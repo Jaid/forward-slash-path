@@ -2,7 +2,22 @@
 export const enforceForwardSlashes = (fileOrFolder: string) => {
   const isExtendedLengthPath = fileOrFolder.startsWith(`\\\\?\\`) // See https://learn.microsoft.com/en-us/windows/win32/fileio/naming-a-file#win32-file-namespaces:~:text=file%20I/O%2C-,the%20%22%5C%5C%3F%5C%22%20prefix,-to%20a%20path
   if (isExtendedLengthPath) {
-    return fileOrFolder
+    return fileOrFolder.replaceAll(`/`, `\\`)
   }
   return fileOrFolder.replaceAll(`\\`, `/`)
+}
+
+export const cleanPath = (fileOrFolder: string) => {
+  let result = enforceForwardSlashes(fileOrFolder)
+  // Check if first symbol is a lowercase letter
+  const firstSymbol = result[0]
+  const isFirstSymbolLowercase = firstSymbol >= `a` && firstSymbol <= `z`
+  if (isFirstSymbolLowercase) {
+    if (result.startsWith(`${firstSymbol}:/`)) {
+      result = firstSymbol.toUpperCase() + result.slice(1)
+    }
+  } else if (result.startsWith(`\\\\?\\${firstSymbol}:\\`)) {
+    result = `\\\\?\\${firstSymbol.toUpperCase()}:${result.slice(6)}`
+  }
+  return result
 }
